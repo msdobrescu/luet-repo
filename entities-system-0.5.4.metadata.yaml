@@ -1,0 +1,121 @@
+path: /home/runner/work/luet-repo/luet-repo/build/entities-system-0.5.4.package.tar.zst
+dependencies: []
+compilespec:
+  steps:
+  - cd entities && git checkout "${PACKAGE_VERSION}" && make build && mv entities
+    /usr/bin/entities
+  - cp -rfv /usr/bin/entities /usr/bin/luet-entities
+  env: []
+  prelude:
+  - apk add make git
+  - git clone https://github.com/mudler/entities
+  image: golang:alpine
+  seed: golang:alpine
+  package:
+    id: 0
+    name: entities
+    version: 0.5.4
+    category: system
+    useflags: []
+    state: ""
+    packagerequires: []
+    packageconflicts: []
+    provides: []
+    hidden: false
+    annotations: {}
+    path: ""
+    description: ""
+    uri: []
+    license: ""
+    buildtimestamp: 2022-01-11 18:31:52.882340645 +0000 UTC m=+280.731200348
+    labels:
+      github.owner: mudler
+      github.repo: entities
+    treedir: ./packages
+  sourceassertion:
+  - package:
+      id: 0
+      name: entities
+      version: 0.5.4
+      category: system
+      useflags: []
+      state: ""
+      packagerequires: []
+      packageconflicts: []
+      provides: []
+      hidden: false
+      annotations: {}
+      path: ""
+      description: ""
+      uri: []
+      license: ""
+      buildtimestamp: ""
+      labels:
+        github.owner: mudler
+        github.repo: entities
+      treedir: ./packages
+    value: true
+    hash:
+      buildhash: 79058e2f9a1a34b1288a9061257bffae1eb9416e69714c2da1efbe190a08abd8
+      packagehash: 1e57d65bd25eae90a13bcb3b1ad38c41c8d2380a9f0c7d50e2ffd12f668c4da3
+  package_dir: ""
+  retrieve: []
+  outputpath: /home/runner/work/luet-repo/luet-repo/build
+  unpack: false
+  includes:
+  - /usr/bin/entities
+  - /usr/bin/luet-entities
+  excludes: []
+  buildoptions:
+    pushimagerepository: quay.io/mocaccinoos/luetrepo-amd64-cache
+    pullimagerepository:
+    - luet/cache
+    pullfirst: false
+    keepimg: false
+    push: false
+    concurrency: 0
+    compressiontype: ""
+    wait: false
+    onlydeps: false
+    nodeps: false
+    solveroptions: {}
+    buildvaluesfile: []
+    buildvalues:
+    - {}
+    packagetargetonly: false
+    rebuild: false
+    backendargs: []
+    backendtype: ""
+    templatesfolder: []
+    context: null
+  copy: []
+  requires_final_images: false
+checksums:
+  sha256: fc40de0a407191ccbf739595bca824e3d222f74126c9483721d3239258cbf9ca
+sourceassertion: []
+compressiontype: zstd
+files:
+- usr/bin/entities
+- usr/bin/luet-entities
+packagecacheimage: ""
+runtime:
+  id: 0
+  name: entities
+  version: 0.5.4
+  category: system
+  useflags: []
+  state: ""
+  packagerequires: []
+  packageconflicts: []
+  provides: []
+  hidden: false
+  annotations: {}
+  path: ""
+  description: ""
+  uri: []
+  license: ""
+  buildtimestamp: ""
+  labels:
+    github.owner: mudler
+    github.repo: entities
+  treedir: ""

@@ -1,0 +1,203 @@
+path: /home/runner/work/luet-repo/luet-repo/build/luet-devkit-system-0.11.8+3.package.tar.zst
+dependencies: []
+compilespec:
+  steps:
+  - cd extensions && DESTDIR=/luet-extensions make install
+  env:
+  - BUNDLED_EXTENSIONS="remote-exec  autobump-github geniso genimage qa-artefacts
+    parallel-tools portage apkbuildconverter k8s-build-scheduler repo-devkit"
+  prelude:
+  - apk add make git
+  - git clone https://github.com/Luet-lab/extensions
+  - |
+    PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+    cd extensions && git checkout -b build v${PACKAGE_VERSION}
+  - mkdir /luet-extensions
+  - go get gopkg.in/yaml.v3
+  - cd extensions && make build
+  image: ""
+  seed: quay.io/mocaccinoos/luetrepo-amd64-cache:a242feb7567cdaf15e7228e8849b48365a32305d44059c91114b952059998b62
+  package:
+    id: 0
+    name: luet-devkit
+    version: 0.11.8+3
+    category: system
+    useflags: []
+    state: ""
+    packagerequires:
+    - id: 0
+      name: luet
+      version: '>=0'
+      category: system
+      useflags: []
+      state: ""
+      packagerequires: []
+      packageconflicts: []
+      provides: []
+      hidden: false
+      annotations: {}
+      path: ""
+      description: ""
+      uri: []
+      license: ""
+      buildtimestamp: ""
+      labels: {}
+      treedir: ""
+    packageconflicts: []
+    provides: []
+    hidden: false
+    annotations: {}
+    path: ""
+    description: Luet devkit package
+    uri: []
+    license: ""
+    buildtimestamp: 2022-01-11 18:40:09.778955278 +0000 UTC m=+777.627815081
+    labels:
+      github.owner: Luet-lab
+      github.repo: extensions
+    treedir: ./packages
+  sourceassertion:
+  - package:
+      id: 0
+      name: luet
+      version: 0.22.7
+      category: system
+      useflags: []
+      state: ""
+      packagerequires: []
+      packageconflicts: []
+      provides: []
+      hidden: false
+      annotations: {}
+      path: ""
+      description: ""
+      uri: []
+      license: ""
+      buildtimestamp: ""
+      labels:
+        github.owner: mudler
+        github.repo: luet
+      treedir: ./packages
+    value: true
+    hash:
+      buildhash: bffc7bb1eeddf4aded51f843f599a45dc5494d1255710c2868b2dfc6605d6e68
+      packagehash: a242feb7567cdaf15e7228e8849b48365a32305d44059c91114b952059998b62
+  - package:
+      id: 0
+      name: luet-devkit
+      version: 0.11.8+3
+      category: system
+      useflags: []
+      state: ""
+      packagerequires:
+      - id: 0
+        name: luet
+        version: '>=0'
+        category: system
+        useflags: []
+        state: ""
+        packagerequires: []
+        packageconflicts: []
+        provides: []
+        hidden: false
+        annotations: {}
+        path: ""
+        description: ""
+        uri: []
+        license: ""
+        buildtimestamp: ""
+        labels: {}
+        treedir: ""
+      packageconflicts: []
+      provides: []
+      hidden: false
+      annotations: {}
+      path: ""
+      description: Luet devkit package
+      uri: []
+      license: ""
+      buildtimestamp: ""
+      labels:
+        github.owner: Luet-lab
+        github.repo: extensions
+      treedir: ./packages
+    value: true
+    hash:
+      buildhash: a242feb7567cdaf15e7228e8849b48365a32305d44059c91114b952059998b62
+      packagehash: 5dddf944ab5258f9f0c25b44c6c46bd25fe5ba6a08670398383dab14d81bb3b9
+  package_dir: /luet-extensions
+  retrieve: []
+  outputpath: /home/runner/work/luet-repo/luet-repo/build
+  unpack: false
+  includes: []
+  excludes: []
+  buildoptions:
+    pushimagerepository: quay.io/mocaccinoos/luetrepo-amd64-cache
+    pullimagerepository:
+    - luet/cache
+    pullfirst: false
+    keepimg: false
+    push: false
+    concurrency: 0
+    compressiontype: ""
+    wait: false
+    onlydeps: false
+    nodeps: false
+    solveroptions: {}
+    buildvaluesfile: []
+    buildvalues:
+    - {}
+    packagetargetonly: false
+    rebuild: false
+    backendargs: []
+    backendtype: ""
+    templatesfolder: []
+    context: null
+  copy: []
+  requires_final_images: false
+checksums:
+  sha256: 092f9c03292e664fe5f5be992daeef65fcd411033083909fa53f7de9a7e3fd8a
+sourceassertion: []
+compressiontype: zstd
+files:
+- usr/bin/luet-abuildspec
+- usr/bin/luet-apkbuildtospec
+- usr/bin/luet-autobump-github
+- usr/bin/luet-genimage-build
+- usr/bin/luet-genimage-clean
+- usr/bin/luet-geniso
+- usr/bin/luet-geniso-isospec
+- usr/bin/luet-k8s-build-scheduler
+- usr/bin/luet-parallel-tools-commondeps
+- usr/bin/luet-portage
+- usr/bin/luet-qa-artefacts
+- usr/bin/luet-qa-repo-fileconflicts
+- usr/bin/luet-remote-exec
+- usr/bin/luet-repo-devkit
+- usr/share/luet-extension/geniso/09_prepare.sh
+- usr/share/luet-extension/geniso/10_pack_rootfs.sh
+- usr/share/luet-extension/geniso/13_prepare_iso.sh
+- usr/share/luet-extension/geniso/14_generate_iso.sh
+- usr/share/luet-extension/geniso/func.sh
+packagecacheimage: ""
+runtime:
+  id: 0
+  name: luet-devkit
+  version: 0.11.8+3
+  category: system
+  useflags: []
+  state: ""
+  packagerequires: []
+  packageconflicts: []
+  provides: []
+  hidden: false
+  annotations: {}
+  path: ""
+  description: Luet devkit package
+  uri: []
+  license: ""
+  buildtimestamp: ""
+  labels:
+    github.owner: Luet-lab
+    github.repo: extensions
+  treedir: ""

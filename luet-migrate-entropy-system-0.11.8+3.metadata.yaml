@@ -1,0 +1,123 @@
+path: /home/runner/work/luet-repo/luet-repo/build/luet-migrate-entropy-system-0.11.8+3.package.tar.zst
+dependencies: []
+compilespec:
+  steps:
+  - cd extensions && DESTDIR=/luet-extensions make install
+  env:
+  - BUNDLED_EXTENSIONS="migrate-entropy"
+  prelude:
+  - apt-get update && apt-get install -y make git
+  - git clone https://github.com/Luet-lab/extensions
+  - |
+    PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+    cd extensions && git checkout -b build v${PACKAGE_VERSION}
+  - mkdir /luet-extensions
+  - go get gopkg.in/yaml.v3
+  - cd extensions && make build
+  image: golang
+  seed: golang
+  package:
+    id: 0
+    name: luet-migrate-entropy
+    version: 0.11.8+3
+    category: system
+    useflags: []
+    state: ""
+    packagerequires: []
+    packageconflicts: []
+    provides: []
+    hidden: false
+    annotations: {}
+    path: ""
+    description: Luet Entropy migration package
+    uri: []
+    license: ""
+    buildtimestamp: 2022-01-11 18:34:54.359322225 +0000 UTC m=+462.208182028
+    labels:
+      github.owner: Luet-lab
+      github.repo: extensions
+    treedir: ./packages
+  sourceassertion:
+  - package:
+      id: 0
+      name: luet-migrate-entropy
+      version: 0.11.8+3
+      category: system
+      useflags: []
+      state: ""
+      packagerequires: []
+      packageconflicts: []
+      provides: []
+      hidden: false
+      annotations: {}
+      path: ""
+      description: Luet Entropy migration package
+      uri: []
+      license: ""
+      buildtimestamp: ""
+      labels:
+        github.owner: Luet-lab
+        github.repo: extensions
+      treedir: ./packages
+    value: true
+    hash:
+      buildhash: dd57a2734d943801e8a766a28393711e1a3776ef95a0845ace660f580a38b909
+      packagehash: c858d216e073999e30475ff40a2dcec43644718c845b87084139bd27db6f0a56
+  package_dir: /luet-extensions
+  retrieve: []
+  outputpath: /home/runner/work/luet-repo/luet-repo/build
+  unpack: false
+  includes: []
+  excludes: []
+  buildoptions:
+    pushimagerepository: quay.io/mocaccinoos/luetrepo-amd64-cache
+    pullimagerepository:
+    - luet/cache
+    pullfirst: false
+    keepimg: false
+    push: false
+    concurrency: 0
+    compressiontype: ""
+    wait: false
+    onlydeps: false
+    nodeps: false
+    solveroptions: {}
+    buildvaluesfile: []
+    buildvalues:
+    - {}
+    packagetargetonly: false
+    rebuild: false
+    backendargs: []
+    backendtype: ""
+    templatesfolder: []
+    context: null
+  copy: []
+  requires_final_images: false
+checksums:
+  sha256: 24f357f30f93a8dfb236041c19cde345175fccb0815fcac69bc44e8b720f0887
+sourceassertion: []
+compressiontype: zstd
+files:
+- usr/bin/luet-migrate-entropy
+packagecacheimage: ""
+runtime:
+  id: 0
+  name: luet-migrate-entropy
+  version: 0.11.8+3
+  category: system
+  useflags: []
+  state: ""
+  packagerequires: []
+  packageconflicts: []
+  provides: []
+  hidden: false
+  annotations: {}
+  path: ""
+  description: Luet Entropy migration package
+  uri: []
+  license: ""
+  buildtimestamp: ""
+  labels:
+    github.owner: Luet-lab
+    github.repo: extensions
+  treedir: ""
